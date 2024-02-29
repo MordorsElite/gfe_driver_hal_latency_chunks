@@ -25,8 +25,8 @@ community detection through label propagation (CDLP) graph analytics algorithm.
 Initialise the sources and the configure script by:
 
 ```
-git clone https://github.com/cedar/gfe_driver
-cd gfe_driver
+git clone https://gitlab.inria.fr/cedar/gfe-driver
+cd gfe-driver
 git submodule update --init
 mkdir build && cd build
 autoreconf -iv ..
@@ -82,7 +82,7 @@ mkdir build && cd build
 ##### HAL
 Use the branch `master` from `https://gitlab.inria.fr/cedar/hal-dynamic-graph`.
 
-Follow the instructions in the README of the repository to setup and build the library.
+Navigate to the HAL folder and adhere to the guidelines provided in the README of the repository to configure and compile the library.
 Then configure the driver with:
 
 ```
