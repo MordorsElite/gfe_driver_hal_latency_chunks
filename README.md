@@ -1,6 +1,5 @@
 ---
-GFE Driver
----
+# GFE Driver
 
 We extend the GFE (Graph Framework Evaluation) driver developed by Teseo (link) and extended by Sortledton (link). Basically, GFE Driver is the program used to run the experiments in "HAL: Dynamic Graph Databases with Out-of-Order Updates" by
 measuring the throughput of updates in libraries supporting structural dynamic graphs and the completion times of the [Graphalytics kernels] (https://github.com/ldbc/ldbc_graphalytics).
