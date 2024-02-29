@@ -1,0 +1,87 @@
+/**
+ * Copyright (C) 2019 Dean De Leo, email: dleo[at]cwi.nl
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+#include "reader.hpp"
+
+#include "dimacs9_reader.hpp"
+#include "format.hpp"
+#include "graphalytics_reader.hpp"
+#include "graphlog_reader.hpp"
+#include "metis_reader.hpp"
+#include "plain_reader.hpp"
+#include "binary_reader.hpp"
+
+#undef CURRENT_ERROR_TYPE
+#define CURRENT_ERROR_TYPE ::gfe::reader::ReaderError
+
+using namespace std;
+
+namespace gfe::reader {
+
+Reader::Reader(){ }
+Reader::~Reader(){ }
+
+std::unique_ptr<Reader> Reader::open(const std::string& path){
+    auto format = get_graph_format(path);
+    switch(format){
+    case Format::DIMACS9:
+        return make_unique<Dimacs9Reader>(path);
+    case Format::GRAPHLOG:
+        return make_unique<graphlog::EdgeReader>(path);
+    case Format::LDBC_GRAPHALYTICS: // LDBC
+        return make_unique<GraphalyticsReader>(path);
+    case Format::METIS:
+        return make_unique<MetisReader>(path);
+    case Format::PLAIN:
+        return make_unique<PlainReader>(path, false);
+    case Format::PLAIN_WEIGHTED:
+        return make_unique<PlainReader>(path, true);
+    case Format::BINARY_EDGE_LOG:
+        return make_unique<BinaryReader>(path);
+    default:
+        ERROR("Unrecognised graph format for the file: `" << path << "'");
+    }
+}
+std::string Reader::getFileName(std::string path)
+{
+    std::string filePath = "C:\\folder\\subfolder\\filename.ext";
+
+    size_t lastSeparatorPos = filePath.find_last_of("\\/");
+    std::string fileName = "";
+    if (lastSeparatorPos != std::string::npos) {
+        // Extract the file name by taking a substring after the last separator
+        std::string fileNameWithExtension = filePath.substr(lastSeparatorPos + 1);
+
+        // Find the position of the last period (.) in the file name
+        size_t lastPeriodPos = fileNameWithExtension.find_last_of('.');
+
+        if (lastPeriodPos != std::string::npos) {
+            // Extract the file name without the extension
+            fileName = fileNameWithExtension.substr(0, lastPeriodPos);
+           // std::cout << "File Name: " << fileName << std::endl;
+        } else {
+          //  std::cout << "File has no extension." << std::endl;
+        }
+    } else {
+        //std::cout << "Invalid file path." << std::endl;
+    }
+
+    return fileName;
+}
+
+} // namespace reader
+
