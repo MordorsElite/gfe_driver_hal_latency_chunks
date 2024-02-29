@@ -1,7 +1,7 @@
 ---
 # GFE Driver
 
-We extend the GFE (Graph Framework Evaluation) driver developed by Teseo (link) and extended by Sortledton (link). Basically, GFE Driver is the program used to run the experiments in "HAL: Dynamic Graph Databases with Out-of-Order Updates" by
+We extend the GFE (Graph Framework Evaluation) driver developed by [Teseo](https://github.com/cwida/gfe_driver) and extended by [Sortledton](https://github.com/PerFuchs/gfe_driver). Basically, GFE Driver is the program used to run the experiments in "HAL: Dynamic Graph Databases with Out-of-Order Updates" by
 measuring the throughput of updates in libraries supporting structural dynamic graphs and the completion times of the [Graphalytics kernels] (https://github.com/ldbc/ldbc_graphalytics).
 For our comparison, we used GFE drivers to support the following systems: [HAL](git), [Sortledton](https://gitlab.db.in.tum.de/per.fuchs/sortledton), [Teseo](https://github.com/cwida/teseo), 
 [LiveGraph](https://github.com/thu-pacman/LiveGraph-Binary).
@@ -80,7 +80,7 @@ mkdir build && cd build
 ```
 
 ##### HAL
-Use the branch `master` from `https://gitlab.db.in.tum.de/user/HAL`.
+Use the branch `master` from `https://gitlab.inria.fr/cedar/hal-dynamic-graph`.
 
 Follow the instructions in the README of the repository to setup and build the library.
 Then configure the driver with:
