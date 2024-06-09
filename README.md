@@ -78,7 +78,36 @@ Then configure the driver with:
 mkdir build && cd build
 ../configure --enable-optimize --disable-debug --with-teseo=/path/to/teseo/build   
 ```
+##### GraphOne
+Use the branch feature/gfe , it contains additional patches w.r.t. upstream, from https://github.com/whatsthecraic/GraphOne:
+'''
+git clone https://github.com/whatsthecraic/GraphOne -b feature/gfe
+cd GraphOne
+mkdir build && cd build
+cmake -S ../ -DCMAKE_BUILD_TYPE=Release
+make -j
+'''
+If the build has been successful, it should at least create the executable graphone64. Then, configure the driver with:
+'''
+mkdir build && cd build
+../configure --enable-optimize --disable-debug --with-graphone=/path/to/graphone/build
+'''
+##### Stinger
+Use the branch feature/gfe , it contains additional patches w.r.t. upstream, from https://github.com/whatsthecraic/stinger:
+'''
+git clone https://github.com/whatsthecraic/stinger -b feature/gfe
+cd stinger
+mkdir build && cd stinger
+cmake ../ -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=0 
+make
+'''
+If the build has been successful, it should at least create the executable bin/stinger_server.
 
+Configure the GFE driver with:
+'''
+mkdir build && cd build
+../configure --enable-optimize --disable-debug --with-stinger=/path/to/stinger/build
+'''
 ##### HAL
 Use the branch `master` from `https://gitlab.inria.fr/cedar/hal-dynamic-graph`.
 
