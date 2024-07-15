@@ -1,6 +1,6 @@
 Sortledton: Sortledton is unable to run PageRank in parallel with the graph500-22 updates workload, and cannot run BFS in parallel with 15 writer and 15 reader threads due to a segmentation issue caused by memory corruption.
 
-Teseo: We were unable to run Teseo on a concurrent read-write workload (graph500-24, uni-24), as mentioned by Sortledton, because the system became stuck indefinitely after approximately 20% progress and could not complete execution within the driver limit of 4 hours. Additionally, we can not able to run Teseo with certain thread distributions (writer and reader) on the graph500-22 update workload used by the concurrent read-write workload because of the same reason described before."
+Teseo: We were unable to run Teseo on a concurrent read-write workload (graph500-24, uni-24), as mentioned by Sortledton, because the system became stuck indefinitely after approximately 20% progress and could not complete execution within the driver limit of 4 hours. Additionally, we can not able to run Teseo with certain thread distributions (writer and reader) on the graph500-22 update workload used by the concurrent read-write workload because of the same reason described before.
 
 
 Llama: In Section 8.4, when executing the updates workload generated from the graph500-22 dataset, Llama fails to produce results and gets stuck at 10% progress, not completing within the gfe_driver limit of 4 hours.
