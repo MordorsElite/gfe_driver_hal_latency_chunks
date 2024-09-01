@@ -138,32 +138,27 @@ A complete image of all datasets used in the experiments can be downloaded from 
 
 ### Repeating the experiments of the paper
 We have scripts in the folder ExperimentsScript/BashScript for paper experiments.
-##### Figure 7: Graph500-24 scalability analysis
+##### Figure 6: Graph500-24 scalability analysis
 Run InsertionOnly/graph500-24-scalability-all-system.sh
-##### Figure 8: Insertion throughput
+##### Figure 7 and 8: Insertion throughput
 
 Run InsertionOnly/all_systems_insertion_only_workload_all_dataset.sh
 
-##### Figure 9: Memory usage on Graph500-24 update workload
+##### Figure 9 and 10: Updates throughput and Memory usage on Graph500-24 update workload
+Run UpdatesWorkload/update_workload_run.sh
 Run UpdatesWorkload/update_workload_run_mem.sh
 
-##### Figure 10: Performance evaluation on graph analytics.
+##### Figure 11: Performance evaluation on graph analytics.
 
 Run AnalyticsWorkload/analytics_only.sh
 
-##### Figure 11: HAL vs. Sortledton on read/write workload
+##### Figure 12: HAL vs. Sortledton on read/write workload
 
 Run ConcurrentReadWrite/hal_sortledton_concurrent_read_write.sh
 
-##### Figure 12: Performance on in- and out-of-order insertions.
+##### Figure 13: Performance on in- and out-of-order insertions.
 
 Run OutOfOrderUpdates/out-of-order-insertions-workload.sh
 
-##### Figure 13: Query result size when varying the swap percentage, on Graph500-24
-
-Run OutOfOrderUpdates/out-of-order-updates-workload-num-edges-all-systems.sh
-##### Table 3: Throughput (MEPS) on graph500-24 workload
-Run UpdatesWorkload/update_workload_run.sh
-##### Table 4: Throughput variations when varying the swap percentage SW, on Graph500-24.
-
+##### Table 3: Throughput variations when varying the swap percentage SW, on Graph500-24.
 Run OutOfOrderUpdates/out-of-order-updates-workload.sh
