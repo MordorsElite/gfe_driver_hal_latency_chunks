@@ -159,11 +159,11 @@ Run ConcurrentReadWrite/hal_sortledton_concurrent_read_write.sh
 
 Run OutOfOrderUpdates/out-of-order-insertions-workload.sh
 
-#### Figure 13: Query result size when varying the swap percentage, on Graph500-24
+##### Figure 13: Query result size when varying the swap percentage, on Graph500-24
 
 Run OutOfOrderUpdates/out-of-order-updates-workload-num-edges-all-systems.sh
-#### Table 3: Throughput (MEPS) on graph500-24 workload
+##### Table 3: Throughput (MEPS) on graph500-24 workload
 Run UpdatesWorkload/update_workload_run.sh
-#### Table 4: Throughput variations when varying the swap percentage SW, on Graph500-24.
+##### Table 4: Throughput variations when varying the swap percentage SW, on Graph500-24.
 
 Run OutOfOrderUpdates/out-of-order-updates-workload.sh
