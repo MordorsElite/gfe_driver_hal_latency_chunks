@@ -22,6 +22,7 @@
 #include <cstdint>
 #include <ostream>
 #include <string>
+#include <vector>
 
 namespace gfe::experiment::details {
 
@@ -38,13 +39,24 @@ class LatencyStatistics {
     uint64_t m_percentile97 {0};
     uint64_t m_percentile99 {0};
 
+    // Per-chunk statistics
+    std::vector<uint64_t> m_chunk_means;
+    std::vector<uint64_t> m_chunk_medians;
+    std::vector<uint64_t> m_chunk_mins;
+    std::vector<uint64_t> m_chunk_maxs;
+    std::vector<uint64_t> m_chunk_p90s;
+    std::vector<uint64_t> m_chunk_p95s;
+    std::vector<uint64_t> m_chunk_p99s;
+
+
 public:
     /**
      * Compute the statistics for the given latencies
      * @param arr_latencies_nanosecs an array containing the latency of each operation, in nanosecs
      * @param arr_latencies_sz number of elements in the array arr_latencies_nanosecs
+     * @param chunk_size the number of operations per chunk for average computation (default = 100)
      */
-    static LatencyStatistics compute_statistics(uint64_t* arr_latencies_nanosecs, uint64_t arr_latencies_sz);
+    static LatencyStatistics compute_statistics(uint64_t* arr_latencies_nanosecs, uint64_t arr_latencies_sz, uint64_t chunk_size = 100);
 
     /**
      * Save the statistics into the table "latency" with the given value for the attribute `type'
@@ -65,6 +77,18 @@ public:
      * Retrieve the 99th percentile of updates
      */
     std::chrono::nanoseconds percentile99() const;
+
+    /**
+     * Retrieve per-chunk statistics
+     */
+    const std::vector<uint64_t>& chunk_means() const { return m_chunk_means; }
+    const std::vector<uint64_t>& chunk_medians() const { return m_chunk_medians; }
+    const std::vector<uint64_t>& chunk_mins() const { return m_chunk_mins; }
+    const std::vector<uint64_t>& chunk_maxs() const { return m_chunk_maxs; }
+    const std::vector<uint64_t>& chunk_p90s() const { return m_chunk_p90s; }
+    const std::vector<uint64_t>& chunk_p95s() const { return m_chunk_p95s; }
+    const std::vector<uint64_t>& chunk_p99s() const { return m_chunk_p99s; } 
+
 };
 
 std::ostream& operator<<(std::ostream& out, const LatencyStatistics& stats);
