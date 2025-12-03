@@ -482,7 +482,7 @@ static void run_standalone(int argc, char* argv[])
                   outfile3.close();
               }
 
-              if (configuration().has_database()) result.save(configuration().db(), false); // false means store results in txt file
+              if (configuration().has_database()) result.save(configuration().db(), configuration().has_database()); // false means store results in txt file
               random_vertex = result.get_random_vertex_id();
 
               if (configuration().validate_inserts() && impl_upd->can_be_validated())
