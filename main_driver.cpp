@@ -532,7 +532,7 @@ static void run_standalone(int argc, char* argv[])
             }
         }
         exp_seq.execute();
-        exp_seq.report_result_in_file();
+        exp_seq.report(configuration().has_database());
 
     }
 
